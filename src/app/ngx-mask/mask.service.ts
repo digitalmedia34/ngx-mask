@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { config, IConfig } from './config';
 import { DOCUMENT } from '@angular/common';
+
 @Injectable()
 export class MaskService {
 
@@ -13,7 +14,6 @@ export class MaskService {
   private _shift: Set<number>;
 
   public constructor(
-    // tslint:disable-next-line
     @Inject(DOCUMENT) private document: any,
     @Inject(config) private _config: IConfig,
   ) {

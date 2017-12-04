@@ -16,7 +16,8 @@ export type optionsConfig = {
 };
 
 export const config: InjectionToken<string> = new InjectionToken('config');
-export const _config: InjectionToken<string> = new InjectionToken('_config');
+export const new_config: InjectionToken<string> = new InjectionToken('NEW_CONFIG');
+export const initial_config: InjectionToken<IConfig> = new InjectionToken('INITIAL_CONFIG');
 
 export const initialConfig: IConfig = {
   clearIfNotMatch: false,

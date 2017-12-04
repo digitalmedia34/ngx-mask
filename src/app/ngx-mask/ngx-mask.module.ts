@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaskDirective } from './mask.directive';
 
-import { _config, config, initialConfig, optionsConfig } from './config';
+import { new_config, initial_config, config, initialConfig, optionsConfig } from './config';
 
 @NgModule({
   imports: [CommonModule],
@@ -11,22 +11,21 @@ import { _config, config, initialConfig, optionsConfig } from './config';
 })
 export class NgxMaskModule {
 
-  public static forRoot(configValue: optionsConfig = initialConfig): ModuleWithProviders {
+  public static forRoot(configValue?: optionsConfig): ModuleWithProviders {
     return {
       ngModule: NgxMaskModule,
       providers: [
-        { provide: config, useFactory: _configFactory, deps: [_config] },
-        { provide: _config, useValue: { ...initialConfig, ...configValue } }
+        { provide: new_config, useValue: configValue },
+        { provide: initial_config, useValue: initialConfig },
+        { provide: config, useFactory: _configFactory, deps: [initial_config, new_config] },
       ]
     };
   }
-
-
 }
 
 /**
  * @internal
  */
-export function _configFactory(configValue: optionsConfig | (() => optionsConfig)): Function | optionsConfig {
-  return (typeof configValue === 'function') ? configValue() : configValue;
+export function _configFactory(initConfig: optionsConfig, configValue: optionsConfig | (() => optionsConfig)): Function | optionsConfig {
+   return (typeof configValue === 'function') ? configValue() : { ...initConfig, ...configValue };
 }
