@@ -14,6 +14,7 @@ export class MaskService {
   private _shift: Set<number>;
 
   public constructor(
+    // tslint:disable-next-line:no-any
     @Inject(DOCUMENT) private document: any,
     @Inject(config) private _config: IConfig,
   ) {

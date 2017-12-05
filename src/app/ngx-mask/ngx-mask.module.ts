@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaskDirective } from './mask.directive';
 
-import { new_config, initial_config, config, initialConfig, optionsConfig } from './config';
+import { config, initial_config, initialConfig, new_config, optionsConfig } from './config';
 
 @NgModule({
   imports: [CommonModule],
@@ -26,6 +26,7 @@ export class NgxMaskModule {
 /**
  * @internal
  */
+// tslint:disable-next-line:max-line-length
 export function _configFactory(initConfig: optionsConfig, configValue: optionsConfig | (() => optionsConfig)): Function | optionsConfig {
    return (typeof configValue === 'function') ? configValue() : { ...initConfig, ...configValue };
 }

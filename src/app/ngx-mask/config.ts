@@ -16,7 +16,9 @@ export type optionsConfig = {
 };
 
 export const config: InjectionToken<string> = new InjectionToken('config');
+// tslint:disable-next-line:variable-name
 export const new_config: InjectionToken<string> = new InjectionToken('NEW_CONFIG');
+// tslint:disable-next-line:variable-name
 export const initial_config: InjectionToken<IConfig> = new InjectionToken('INITIAL_CONFIG');
 
 export const initialConfig: IConfig = {
